@@ -1,0 +1,50 @@
+{
+    "name": "@casthub/logger",
+    "version": "1.0.0",
+    "description": "Pretty-print utility logger for JS/TS",
+    "files": [
+        "build"
+    ],
+    "module": "./build/index.es.js",
+    "types": "./build/src/index.d.ts",
+    "license": "GPL-3.0-only",
+    "author": {
+        "name": "CastHub Limited",
+        "url": "https://casthub.app",
+        "email": "support@casthub.app"
+    },
+    "homepage": "https://github.com/casthub/logger",
+    "bugs": {
+        "url": "https://github.com/casthub/logger/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/casthub/logger.git"
+    },
+    "keywords": [
+        "typescript",
+        "vue",
+        "logger",
+        "log",
+        "console",
+        "color"
+    ],
+    "scripts": {
+        "clean": "rimraf build",
+        "prepack": "yarn build",
+        "build": "yarn clean && yarn compile",
+        "compile": "vite build",
+        "dev": "vite build --watch"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^1.9.3",
+        "@vue/compiler-sfc": "^3.2.20",
+        "nanoevents": "^6.0.1",
+        "rimraf": "^3.0.2",
+        "tslib": "^2.3.1",
+        "typescript": "^4.4.4",
+        "vite": "^2.6.7",
+        "vite-plugin-dts": "^0.8.3",
+        "vue": "next"
+    }
+}
