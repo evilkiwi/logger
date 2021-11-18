@@ -108,3 +108,5 @@ sw.*
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+
+build
