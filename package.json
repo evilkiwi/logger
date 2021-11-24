@@ -1,5 +1,5 @@
 {
-    "name": "@casthub/logger",
+    "name": "@tnotifier/logger",
     "version": "1.0.0",
     "description": "Pretty-print utility logger for JS/TS",
     "files": [
@@ -10,16 +10,16 @@
     "license": "GPL-3.0-only",
     "author": {
         "name": "CastHub Limited",
-        "url": "https://casthub.app",
-        "email": "support@casthub.app"
+        "url": "https://tnotifier.app",
+        "email": "support@tnotifier.app"
     },
-    "homepage": "https://github.com/casthub/logger",
+    "homepage": "https://github.com/tnotifier/logger",
     "bugs": {
-        "url": "https://github.com/casthub/logger/issues"
+        "url": "https://github.com/tnotifier/logger/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/casthub/logger.git"
+        "url": "git+https://github.com/tnotifier/logger.git"
     },
     "keywords": [
         "typescript",
