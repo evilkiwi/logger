@@ -27,7 +27,7 @@ export default defineConfig({
         outDir: 'build',
         assetsDir: '.',
         minify: process.env.MODE === 'development' ? false : 'terser',
-        target: 'chrome91',
+        target: ['chrome91', 'node14'],
         terserOptions: {
             ecma: 2020,
             compress: {
@@ -39,7 +39,7 @@ export default defineConfig({
             entry: join('src', 'index.ts'),
             fileName: 'index',
             name: 'Logger',
-            formats: ['es'],
+            formats: ['es', 'cjs'],
         },
         rollupOptions: {
             external: ['vue'],

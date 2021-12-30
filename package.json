@@ -1,10 +1,12 @@
 {
     "name": "@tnotifier/logger",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Pretty-print utility logger for JS/TS",
     "files": [
         "build"
     ],
+    "sideEffects": false,
+    "main": "./build/index.cjs.js",
     "module": "./build/index.es.js",
     "types": "./build/src/index.d.ts",
     "license": "GPL-3.0-only",
@@ -36,10 +38,12 @@
         "compile": "vite build",
         "dev": "vite build --watch"
     },
+    "dependencies": {
+        "nanoevents": "^6.0.1"
+    },
     "devDependencies": {
         "@vitejs/plugin-vue": "^1.9.3",
         "@vue/compiler-sfc": "^3.2.20",
-        "nanoevents": "^6.0.1",
         "rimraf": "^3.0.2",
         "tslib": "^2.3.1",
         "typescript": "^4.4.4",
