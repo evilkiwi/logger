@@ -1,6 +1,6 @@
-import type { Logger, LoggerOptions, Namespace, PrintOptions } from './types';
-import { timestamp } from './helpers';
-import { PrintLevel } from './types';
+import type { Logger, LoggerOptions, Namespace, PrintOptions } from '@/types';
+import { timestamp } from '@/helpers';
+import { PrintLevel } from '@/types';
 
 let namespace: Namespace = {
     name: '',
@@ -57,7 +57,14 @@ const print = (opts: PrintOptions) => {
 };
 
 export const createLogger = (options: LoggerOptions = {}): Logger => {
+    const setDisabled = (isDisabled: boolean) => disabled = isDisabled;
+    let disabled = false;
+
     const group = (message: string, context?: () => void, collapsed = false, level?: PrintLevel, prefix?: string) => {
+        if (disabled) {
+            return;
+        }
+
         print({
             level: level ?? PrintLevel.Log,
             message,
@@ -70,32 +77,74 @@ export const createLogger = (options: LoggerOptions = {}): Logger => {
             groupEnd();
         }
     };
-    const groupCollapsed = (message: string, context?: () => void) => group(message, context, true, undefined, options.name);
-    const groupEnd = () => console.groupEnd();
-    const debug = (message: string, ...args: unknown[]) => print({
-        level: PrintLevel.Debug,
-        prefix: options.name,
-        message,
-        args,
-    });
-    const log = (message: string, ...args: unknown[]) => print({
-        level: PrintLevel.Log,
-        message,
-        args,
-    });
-    const info = (message: string, ...args: unknown[]) => print({
-        level: PrintLevel.Info,
-        prefix: options.name,
-        message,
-        args,
-    });
-    const error = (message: string, ...args: unknown[]) => print({
-        level: PrintLevel.Error,
-        prefix: options.name,
-        message,
-        args,
-        color: '#FFFFFF',
-    });
+
+    const groupCollapsed = (message: string, context?: () => void) => {
+        if (disabled) {
+            return;
+        }
+
+        group(message, context, true, undefined, options.name);
+    };
+
+    const groupEnd = () => {
+        if (disabled) {
+            return;
+        }
+
+        console.groupEnd();
+    };
+
+    const debug = (message: string, ...args: unknown[]) => {
+        if (disabled) {
+            return;
+        }
+
+        print({
+            level: PrintLevel.Debug,
+            prefix: options.name,
+            message,
+            args,
+        });
+    };
+
+    const log = (message: string, ...args: unknown[]) => {
+        if (disabled) {
+            return;
+        }
+
+        print({
+            level: PrintLevel.Log,
+            message,
+            args,
+        });
+    };
+
+    const info = (message: string, ...args: unknown[]) => {
+        if (disabled) {
+            return;
+        }
+
+        print({
+            level: PrintLevel.Info,
+            prefix: options.name,
+            message,
+            args,
+        });
+    };
+
+    const error = (message: string, ...args: unknown[]) => {
+        if (disabled) {
+            return;
+        }
+
+        print({
+            level: PrintLevel.Error,
+            prefix: options.name,
+            message,
+            args,
+            color: '#FFFFFF',
+        });
+    };
 
     const logger: Omit<Logger, 'useLogger'> = {
         group,
@@ -105,6 +154,8 @@ export const createLogger = (options: LoggerOptions = {}): Logger => {
         log,
         info,
         error,
+        setDisabled,
+        disabled,
     };
 
     function useLogger() {

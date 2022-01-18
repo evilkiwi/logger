@@ -35,5 +35,7 @@ export interface Logger {
     log: LoggerFunction;
     info: LoggerFunction;
     error: LoggerFunction;
+    disabled: boolean;
+    setDisabled: (disabled: boolean) => void;
     useLogger: () => Omit<Logger, 'useLogger'>;
 }
