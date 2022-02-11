@@ -1,49 +1,35 @@
 import type { Logger, LoggerOptions, Namespace, PrintOptions } from '@/types';
 import { timestamp } from '@/helpers';
 import { PrintLevel } from '@/types';
+import { base, code } from './styles';
 
-let namespace: Namespace = {
-    name: '',
-};
+const codeRegex = /(`([^`]*)`)+/g;
+let namespace: Namespace = { name: '' };
 let styled = true;
 
 export const setNamespace = (newNamespace: Namespace) => namespace = newNamespace;
 export const setStyled = (isStyled: boolean) => styled = isStyled;
 
-const codeRegex = /(`([^`]*)`)+/g;
-const style = `
-    font-size: 11px;
-    font-weight: normal;
-`;
-const code = `
-    display: inline-block;
-    font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", "Liberation Mono", Menlo, Monaco, Consolas, monospace;
-    padding: 1px 4px;
-    font-size: 10px;
-    background-color: #E92063;
-    font-weight: bold;
-    color: #111111;
-    border-radius: 3px;
-    vertical-align: top;
-`;
-
 const print = (opts: PrintOptions) => {
-    const localStyle = `${style} ${opts.color ? opts.color : ''}`;
+    const localStyle = `${base} ${opts.color ? opts.color : ''}`;
     const styles: string[] = [localStyle];
     const level = opts.call ?? `${opts.level}`;
     const startStyle = styled ? '%c' : '';
-    let loggerPrefix = opts.prefix ?? '';
-    let namespacePrefix = '';
     let text = opts.message;
+    let namespacePrefix = '';
+    let loggerPrefix = '';
 
-    loggerPrefix = loggerPrefix.length > 0 ? `[${loggerPrefix}] ` : '';
+    if (opts.prefix && opts.prefix.name) {
+        loggerPrefix = `${startStyle}[${opts.prefix.name}] `;
+        styles.unshift(opts.prefix.color ? `color: ${opts.prefix.color};` : localStyle);
+    }
 
     if (namespace.name.length > 0) {
         namespacePrefix = `${startStyle}[${namespace.name}] `;
         styles.unshift(namespace.color ? `color: ${namespace.color};` : localStyle);
     }
 
-    text = `${namespacePrefix}${startStyle}${loggerPrefix}${text} @ ${timestamp()}`;
+    text = `${namespacePrefix}${loggerPrefix}${startStyle}${text} @ ${timestamp()}`;
 
     const total = (text.match(codeRegex) ?? []).length;
 
@@ -60,7 +46,7 @@ export const createLogger = (options: LoggerOptions = {}): Logger => {
     const setDisabled = (isDisabled: boolean) => disabled = isDisabled;
     let disabled = false;
 
-    const group = (message: string, context?: () => void, collapsed = false, level?: PrintLevel, prefix?: string) => {
+    const group = (message: string, context?: () => void, collapsed = false, level?: PrintLevel, prefix?: LoggerOptions) => {
         if (disabled) {
             return;
         }
@@ -83,7 +69,7 @@ export const createLogger = (options: LoggerOptions = {}): Logger => {
             return;
         }
 
-        group(message, context, true, undefined, options.name);
+        group(message, context, true, undefined, options);
     };
 
     const groupEnd = () => {
@@ -101,7 +87,7 @@ export const createLogger = (options: LoggerOptions = {}): Logger => {
 
         print({
             level: PrintLevel.Debug,
-            prefix: options.name,
+            prefix: options,
             message,
             args,
         });
@@ -126,7 +112,7 @@ export const createLogger = (options: LoggerOptions = {}): Logger => {
 
         print({
             level: PrintLevel.Info,
-            prefix: options.name,
+            prefix: options,
             message,
             args,
         });
@@ -139,7 +125,7 @@ export const createLogger = (options: LoggerOptions = {}): Logger => {
 
         print({
             level: PrintLevel.Error,
-            prefix: options.name,
+            prefix: options,
             message,
             args,
             color: '#FFFFFF',

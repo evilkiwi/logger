@@ -1,3 +1,7 @@
+# 1.0.5 (2022-02-11)
+
+- Fix namespace color not being applied
+
 # 1.0.4 (2022-01-18)
 
 - Updated README with usage examples

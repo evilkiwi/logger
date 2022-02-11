@@ -1,6 +1,6 @@
 {
     "name": "@tnotifier/logger",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Pretty-print utility logger for JS/TS",
     "files": [
         "build"
@@ -10,7 +10,7 @@
     "types": "./build/src/index.d.ts",
     "license": "GPL-3.0-only",
     "author": {
-        "name": "CastHub Limited",
+        "name": "Evil Kiwi Limited",
         "url": "https://tnotifier.app",
         "email": "support@tnotifier.app"
     },
@@ -30,6 +30,9 @@
         "console",
         "color"
     ],
+    "workspaces": [
+        "example"
+    ],
     "scripts": {
         "clean": "rimraf build",
         "prepack": "yarn build",
@@ -38,13 +41,13 @@
         "dev": "vite build --watch"
     },
     "devDependencies": {
-        "@vitejs/plugin-vue": "^2.0.1",
-        "@vue/compiler-sfc": "^3.2.27",
+        "@vitejs/plugin-vue": "^2.2.0",
+        "@vue/compiler-sfc": "^3.2.30",
         "rimraf": "^3.0.2",
         "tslib": "^2.3.1",
-        "typescript": "^4.5.4",
-        "vite": "^2.7.12",
+        "typescript": "^4.5.5",
+        "vite": "^2.8.0",
         "vite-plugin-dts": "^0.9.9",
-        "vue": "next"
+        "vue": "^3.2.30"
     }
 }

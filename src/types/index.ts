@@ -13,7 +13,10 @@ export interface Namespace {
 
 export interface PrintOptions {
     level: PrintLevel;
-    prefix?: string;
+    prefix?: {
+        name?: string;
+        color?: string;
+    };
     message: string;
     args?: any[];
     call?: string;
@@ -28,7 +31,7 @@ export interface LoggerOptions {
 export type LoggerFunction = (message: string, ...args: unknown[]) => void;
 
 export interface Logger {
-    group: (message: string, context?: () => void, collapsed?: boolean, level?: PrintLevel, prefix?: string) => void;
+    group: (message: string, context?: () => void, collapsed?: boolean, level?: PrintLevel, prefix?: LoggerOptions) => void;
     groupCollapsed: (message: string, context?: () => void) => void;
     groupEnd: () => void;
     debug: LoggerFunction;
