@@ -1,15 +1,15 @@
 <div align="center">
-    <a href="https://www.npmjs.com/package/@tnotifier/logger" target="_blank">
-        <img src="https://img.shields.io/npm/v/@tnotifier/logger?style=flat-square" alt="NPM" />
+    <a href="https://www.npmjs.com/package/@evilkiwi/logger" target="_blank">
+        <img src="https://img.shields.io/npm/v/@evilkiwi/logger?style=flat-square" alt="NPM" />
     </a>
     <a href="https://discord.gg/XMrHXtN" target="_blank">
         <img src="https://img.shields.io/discord/123906549860139008?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF&style=flat-square" alt="Discord" />
     </a>
-    <img src="https://img.shields.io/npm/l/@tnotifier/logger?style=flat-square" alt="Apache-2.0" />
+    <img src="https://img.shields.io/npm/l/@evilkiwi/logger?style=flat-square" alt="Apache-2.0" />
     <h3>Pretty-print utility logger for JS/TS</h3>
 </div>
 
-`@tnotifier/logger` provides a small interface on top of the existing `console` API and includes things such as:
+`@evilkiwi/logger` provides a small interface on top of the existing `console` API and includes things such as:
 
 - Automatic code highlighting via \`template literal\` syntax
 - High-precision timestamps
@@ -23,19 +23,19 @@
 This package is available via NPM:
 
 ```bash
-yarn add @tnotifier/logger
+yarn add @evilkiwi/logger
 
 # or
 
-npm install @tnotifier/logger
+npm install @evilkiwi/logger
 ```
 
 ## Usage
 
-By default, `@tnotifier/logger` exports traditional logging methods using a shared logger instance. For example:
+By default, `@evilkiwi/logger` exports traditional logging methods using a shared logger instance. For example:
 
 ```typescript
-import { debug, error } from '@tnotifier/logger';
+import { debug, error } from '@evilkiwi/logger';
 
 try {
     await something();
@@ -48,7 +48,7 @@ try {
 However, if you'd like to add namespaces and use multiple logger instances within your application, you can instead instantiate a new Logger:
 
 ```typescript
-import { createLogger } from '@tnotifier/logger';
+import { createLogger } from '@evilkiwi/logger';
 
 const loggerA = createLogger({
     name: 'module-a',
@@ -66,7 +66,7 @@ loggerA.error('hello world B!');
 You can also set a global namespace for all Logger instances created via your App. This can be useful if your console displays output from multiple systems, for example an Electron App or when using iFrames.
 
 ```typescript
-import { setNamespace } from '@tnotifier/logger';
+import { setNamespace } from '@evilkiwi/logger';
 
 setNamespace({
     name: 'website',
@@ -74,7 +74,7 @@ setNamespace({
 });
 ```
 
-This will be pre-pended to all logging that passes through `@tnotifier/logger`, regardless of whether it was instanced.
+This will be pre-pended to all logging that passes through `@evilkiwi/logger`, regardless of whether it was instanced.
 
 ## To-do
 

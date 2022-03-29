@@ -1,5 +1,5 @@
 {
-    "name": "@tnotifier/logger",
+    "name": "@evilkiwi/logger",
     "version": "1.0.5",
     "description": "Pretty-print utility logger for JS/TS",
     "files": [
@@ -11,16 +11,16 @@
     "license": "GPL-3.0-only",
     "author": {
         "name": "Evil Kiwi Limited",
-        "url": "https://tnotifier.app",
-        "email": "support@tnotifier.app"
+        "url": "https://evil.kiwi",
+        "email": "support@evil.kiwi"
     },
-    "homepage": "https://github.com/tnotifier/logger",
+    "homepage": "https://github.com/evilkiwi/logger",
     "bugs": {
-        "url": "https://github.com/tnotifier/logger/issues"
+        "url": "https://github.com/evilkiwi/logger/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/tnotifier/logger.git"
+        "url": "git+https://github.com/evilkiwi/logger.git"
     },
     "keywords": [
         "typescript",
