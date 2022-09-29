@@ -1,26 +1,26 @@
 {
-    "name": "@evilkiwi/logger",
-    "version": "1.0.5",
+    "name": "@oyed/logger",
+    "version": "1.0.6",
     "description": "Pretty-print utility logger for JS/TS",
     "files": [
         "build"
     ],
-    "main": "./build/index.cjs.js",
-    "module": "./build/index.es.js",
-    "types": "./build/src/index.d.ts",
+    "main": "./build/index.js",
+    "module": "./build/index.mjs",
+    "types": "./build/index.d.ts",
     "license": "GPL-3.0-only",
     "author": {
-        "name": "Evil Kiwi Limited",
-        "url": "https://evil.kiwi",
-        "email": "support@evil.kiwi"
+        "name": "OYED",
+        "url": "https://oyed.dev",
+        "email": "support@oyed.dev"
     },
-    "homepage": "https://github.com/evilkiwi/logger",
+    "homepage": "https://github.com/oyed/logger",
     "bugs": {
-        "url": "https://github.com/evilkiwi/logger/issues"
+        "url": "https://github.com/oyed/logger/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/evilkiwi/logger.git"
+        "url": "git+https://github.com/oyed/logger.git"
     },
     "keywords": [
         "typescript",
@@ -30,24 +30,19 @@
         "console",
         "color"
     ],
-    "workspaces": [
-        "example"
-    ],
     "scripts": {
         "clean": "rimraf build",
-        "prepack": "yarn build",
-        "build": "yarn clean && yarn compile",
+        "prepack": "pnpm run build",
+        "build": "pnpm run clean && pnpm run compile",
         "compile": "vite build",
         "dev": "vite build --watch"
     },
     "devDependencies": {
-        "@vitejs/plugin-vue": "^2.2.0",
-        "@vue/compiler-sfc": "^3.2.30",
         "rimraf": "^3.0.2",
-        "tslib": "^2.3.1",
-        "typescript": "^4.5.5",
-        "vite": "^2.8.0",
-        "vite-plugin-dts": "^0.9.9",
-        "vue": "^3.2.30"
+        "terser": "^5.15.0",
+        "tslib": "^2.4.0",
+        "typescript": "^4.8.4",
+        "vite": "^3.1.4",
+        "vite-plugin-dts": "^1.6.1"
     }
 }

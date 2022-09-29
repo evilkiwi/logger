@@ -1,3 +1,9 @@
+# 1.0.6 (2022-09-29)
+
+- Moved to OYED `@oyed/astar`
+- Moved repo to PNPM
+- Updated dependencies
+
 # 1.0.5 (2022-02-11)
 
 - Fix namespace color not being applied

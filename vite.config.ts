@@ -1,4 +1,3 @@
-import vue from '@vitejs/plugin-vue';
 import { join, resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
@@ -6,10 +5,11 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
     root: __dirname,
     plugins: [
-        vue(),
         dts({
             outputDir: join(__dirname, 'build'),
             tsConfigFilePath: join(__dirname, 'tsconfig.json'),
+            skipDiagnostics: false,
+            logDiagnostics: true,
             staticImport: true,
         }),
     ],
@@ -27,7 +27,7 @@ export default defineConfig({
         outDir: 'build',
         assetsDir: '.',
         minify: process.env.MODE === 'development' ? false : 'terser',
-        target: ['chrome91', 'node14'],
+        target: 'chrome104',
         terserOptions: {
             ecma: 2020,
             compress: {
