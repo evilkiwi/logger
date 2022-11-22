@@ -1,6 +1,6 @@
 {
-    "name": "@oyed/logger",
-    "version": "1.0.6",
+    "name": "@evilkiwi/logger",
+    "version": "1.0.7",
     "description": "Pretty-print utility logger for JS/TS",
     "files": [
         "build"
@@ -10,17 +10,17 @@
     "types": "./build/index.d.ts",
     "license": "GPL-3.0-only",
     "author": {
-        "name": "OYED",
-        "url": "https://oyed.dev",
-        "email": "support@oyed.dev"
+        "name": "Evil Kiwi Limited",
+        "url": "https://evil.kiwi",
+        "email": "support@evil.kiwi"
     },
-    "homepage": "https://github.com/oyed/logger",
+    "homepage": "https://github.com/evilkiwi/logger",
     "bugs": {
-        "url": "https://github.com/oyed/logger/issues"
+        "url": "https://github.com/evilkiwi/logger/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/oyed/logger.git"
+        "url": "git+https://github.com/evilkiwi/logger.git"
     },
     "keywords": [
         "typescript",
@@ -39,10 +39,10 @@
     },
     "devDependencies": {
         "rimraf": "^3.0.2",
-        "terser": "^5.15.0",
-        "tslib": "^2.4.0",
-        "typescript": "^4.8.4",
-        "vite": "^3.1.4",
-        "vite-plugin-dts": "^1.6.1"
+        "terser": "^5.15.1",
+        "tslib": "^2.4.1",
+        "typescript": "^4.9.3",
+        "vite": "^3.2.4",
+        "vite-plugin-dts": "^1.7.1"
     }
 }

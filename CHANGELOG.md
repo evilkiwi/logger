@@ -1,6 +1,11 @@
+# 1.0.7 (2022-11-22)
+
+- Move back to Evil Kiwi (`@evilkiwi/astar`)
+- Update dependencies
+
 # 1.0.6 (2022-09-29)
 
-- Moved to OYED `@oyed/astar`
+- Moved to OYED `@oyed/logger`
 - Moved repo to PNPM
 - Updated dependencies
 
