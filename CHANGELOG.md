@@ -1,3 +1,8 @@
+# 1.1.0 (2022-12-23)
+
+- Force ESM Module type
+- Update dependencies
+
 # 1.0.7 (2022-11-22)
 
 - Move back to Evil Kiwi (`@evilkiwi/astar`)

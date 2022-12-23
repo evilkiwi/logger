@@ -1,12 +1,12 @@
 <div align="center">
-    <a href="https://www.npmjs.com/package/@evilkiwi/logger" target="_blank">
-        <img src="https://img.shields.io/npm/v/@evilkiwi/logger?style=flat-square" alt="NPM" />
-    </a>
-    <a href="https://discord.gg/3S6AKZ2GR9" target="_blank">
-        <img src="https://img.shields.io/discord/1000565079789535324?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF&style=flat-square" alt="Discord" />
-    </a>
-    <img src="https://img.shields.io/npm/l/@evilkiwi/logger?style=flat-square" alt="GPL-3.0-only" />
-    <h3>Pretty-print utility logger for JS/TS</h3>
+  <a href="https://www.npmjs.com/package/@evilkiwi/logger" target="_blank">
+    <img src="https://img.shields.io/npm/v/@evilkiwi/logger?style=flat-square" alt="NPM" />
+  </a>
+  <a href="https://discord.gg/3S6AKZ2GR9" target="_blank">
+    <img src="https://img.shields.io/discord/1000565079789535324?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF&style=flat-square" alt="Discord" />
+  </a>
+  <img src="https://img.shields.io/npm/l/@evilkiwi/logger?style=flat-square" alt="GPL-3.0-only" />
+  <h3>Pretty-print utility logger for JS/TS</h3>
 </div>
 
 `@evilkiwi/logger` provides a small interface on top of the existing `console` API and includes things such as:
@@ -36,10 +36,10 @@ By default, `@evilkiwi/logger` exports traditional logging methods using a share
 import { debug, error } from '@evilkiwi/logger';
 
 try {
-    await something();
-    debug('success!');
+  await something();
+  debug('success!');
 } catch (e) {
-    error('failure!', e);
+  error('failure!', e);
 }
 ```
 
@@ -49,12 +49,12 @@ However, if you'd like to add namespaces and use multiple logger instances withi
 import { createLogger } from '@evilkiwi/logger';
 
 const loggerA = createLogger({
-    name: 'module-a',
-    color: '#FF0000',
+  name: 'module-a',
+  color: '#FF0000',
 });
 const loggerB = createLogger({
-    name: 'module-b',
-    color: '#00FF00',
+  name: 'module-b',
+  color: '#00FF00',
 });
 
 loggerA.debug('hello world A!');
@@ -67,13 +67,9 @@ You can also set a global namespace for all Logger instances created via your Ap
 import { setNamespace } from '@evilkiwi/logger';
 
 setNamespace({
-    name: 'website',
-    color: '#0000FF',
+  name: 'website',
+  color: '#0000FF',
 });
 ```
 
 This will be pre-pended to all logging that passes through `@evilkiwi/logger`, regardless of whether it was instanced.
-
-## To-do
-
-- Remove side effects to enable tree shaking
