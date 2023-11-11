@@ -30,20 +30,7 @@ npm install @evilkiwi/logger
 
 ## Usage
 
-By default, `@evilkiwi/logger` exports traditional logging methods using a shared logger instance. For example:
-
-```typescript
-import { debug, error } from '@evilkiwi/logger';
-
-try {
-  await something();
-  debug('success!');
-} catch (e) {
-  error('failure!', e);
-}
-```
-
-However, if you'd like to add namespaces and use multiple logger instances within your application, you can instead instantiate a new Logger:
+Since version `2.0.0`, there are no global logger exports. Instead, you must always create a logger instance:
 
 ```typescript
 import { createLogger } from '@evilkiwi/logger';
@@ -60,16 +47,3 @@ const loggerB = createLogger({
 loggerA.debug('hello world A!');
 loggerA.error('hello world B!');
 ```
-
-You can also set a global namespace for all Logger instances created via your App. This can be useful if your console displays output from multiple systems, for example an Electron App or when using iFrames.
-
-```typescript
-import { setNamespace } from '@evilkiwi/logger';
-
-setNamespace({
-  name: 'website',
-  color: '#0000FF',
-});
-```
-
-This will be pre-pended to all logging that passes through `@evilkiwi/logger`, regardless of whether it was instanced.

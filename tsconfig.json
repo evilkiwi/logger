@@ -17,18 +17,11 @@
     "module": "es2022",
     "moduleResolution": "node",
     "target": "es2022",
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ],
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "paths": {
       "*": ["./src/types/*.d.ts"],
       "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "./src/**/*"
-  ]
+  "include": ["./src/**/*"]
 }

@@ -21,11 +21,13 @@ export interface PrintOptions {
   args?: any[];
   call?: string;
   color?: string;
+  styled?: boolean;
 }
 
 export interface LoggerOptions {
   name?: string;
   color?: string;
+  styled?: boolean;
 }
 
 export type LoggerFunction = (message: string, ...args: unknown[]) => void;

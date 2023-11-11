@@ -1,3 +1,8 @@
+# 2.0.0 (2023-11-11)
+
+- Remove global options
+- Update dependencies
+
 # 1.1.0 (2022-12-23)
 
 - Force ESM Module type

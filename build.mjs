@@ -3,7 +3,6 @@ import { build } from 'esbuild';
 /** @type {import('esbuild').BuildOptions} */
 const options = {
   sourcemap: process.env.NODE_ENV === 'development',
-  watch: process.env.NODE_ENV === 'development',
   entryPoints: ['./src/index.ts'],
   logLevel: 'debug',
   platform: 'node',
