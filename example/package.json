@@ -6,10 +6,10 @@
     "dev": "vite"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.4.1",
-    "@vue/compiler-sfc": "^3.3.8",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.0",
-    "vue": "^3.3.8"
+    "@vitejs/plugin-vue": "^4.5.2",
+    "@vue/compiler-sfc": "^3.3.11",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.7",
+    "vue": "^3.3.11"
   }
 }

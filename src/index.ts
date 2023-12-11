@@ -1,7 +1,6 @@
-import { timestamp } from '@/helpers';
-import { PrintLevel, type Logger, type LoggerOptions, type Namespace, type PrintOptions } from '@/types';
-
+import { timestamp } from './helpers';
 import { base, code } from './styles';
+import { PrintLevel, type Logger, type LoggerOptions, type Namespace, type PrintOptions } from './types';
 
 export function print(opts: PrintOptions) {
   const localStyle = `${base} ${opts.color ? opts.color : ''}`;
