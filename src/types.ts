@@ -1,46 +1,41 @@
-export enum PrintLevel {
-  Log = 'log',
-  Debug = 'debug',
-  Error = 'error',
-  Info = 'info',
-  Store = 'store',
+import type { LogLevel } from './enums';
+
+export type StyleType = 'base' | 'code';
+export type Style = `${string}:${string};`;
+export type StyleInput = Style | Style[];
+
+export interface CreateLoggerProps {
+  name?: string | null;
+  color?: string | number | null;
+  styles?: Partial<Record<StyleType, StyleInput>> | false;
 }
 
-export interface Namespace {
-  name: string;
-  color?: string;
+export interface LoggerProps {
+  name: string | null;
+  color: string | number | null;
+  styles: Record<StyleType, StyleInput> | false;
 }
 
-export interface PrintOptions {
-  level: PrintLevel;
-  prefix?: {
-    name?: string;
-    color?: string;
-  };
+export interface PrintProps {
+  level: LogLevel;
   message: string;
-  args?: any[];
-  call?: string;
-  color?: string;
-  styled?: boolean;
-}
-
-export interface LoggerOptions {
-  name?: string;
-  color?: string;
-  styled?: boolean;
+  args?: unknown[];
+  call?: 'groupCollapsed' | 'group' | LogLevel;
+  color?: string | number;
 }
 
 export type LoggerFunction = (message: string, ...args: unknown[]) => void;
 
 export interface Logger {
-  group: (message: string, context?: () => void, collapsed?: boolean, level?: PrintLevel, prefix?: LoggerOptions) => void;
-  groupCollapsed: (message: string, context?: () => void) => void;
+  props: Required<CreateLoggerProps>;
+  setDisabled: (disabled: boolean) => void;
+  disabled: boolean;
+  group: (message: string, context?: () => void, level?: LogLevel, collapsed?: boolean) => void;
+  groupCollapsed: (message: string, context?: () => void, level?: LogLevel) => void;
   groupEnd: () => void;
   debug: LoggerFunction;
   log: LoggerFunction;
   info: LoggerFunction;
+  warn: LoggerFunction;
   error: LoggerFunction;
-  disabled: boolean;
-  setDisabled: (disabled: boolean) => void;
-  useLogger: () => Omit<Logger, 'useLogger'>;
 }

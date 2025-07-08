@@ -2,48 +2,73 @@
   <a href="https://www.npmjs.com/package/@evilkiwi/logger" target="_blank">
     <img src="https://img.shields.io/npm/v/@evilkiwi/logger?style=flat-square" alt="NPM" />
   </a>
-  <a href="https://discord.gg/3S6AKZ2GR9" target="_blank">
-    <img src="https://img.shields.io/discord/1000565079789535324?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF&style=flat-square" alt="Discord" />
-  </a>
   <img src="https://img.shields.io/npm/l/@evilkiwi/logger?style=flat-square" alt="GPL-3.0-only" />
-  <h3>Pretty-print utility logger for JS/TS</h3>
+  <h3>Pretty-print utility logger for browsers.</h3>
 </div>
 
-`@evilkiwi/logger` provides a small interface on top of the existing `console` API and includes things such as:
+`@evilkiwi/logger` provides a small interface on top of the existing `console` browser API, adding:
 
-- Automatic code highlighting via \`template literal\` syntax
-- High-precision timestamps
-- Namespacing and Instanced Loggers
-- Enable/disable logging at runtime
+- Automatic code highlighting via \`template literal\` syntax.
+- Instanced and side-effect-free loggers.
+- Enable/disable logging at runtime.
+- High-precision timestamps.
+- Customizeable CSS styling.
+- Zero-dependencies.
 
 ## Installation
 
-This package is available via NPM:
-
 ```bash
-yarn add @evilkiwi/logger
-
-# or
-
 npm install @evilkiwi/logger
 ```
 
 ## Usage
 
-Since version `2.0.0`, there are no global logger exports. Instead, you must always create a logger instance:
+See the [example folder](https://github.com/evilkiwi/logger/tree/master/example) for a working example.
 
 ```typescript
 import { createLogger } from '@evilkiwi/logger';
 
-const loggerA = createLogger({
-  name: 'module-a',
+const logger = createLogger({
+  // Optional - a prefix to prepend to all messages from this logger.
+  name: 'my-logger',
+
+  // Optional - a color to use for the `name` prefix, can be a hex string or a number (i.e. 0xff0000).
   color: '#FF0000',
-});
-const loggerB = createLogger({
-  name: 'module-b',
-  color: '#00FF00',
+
+  // Optional - a set of CSS styles to use for the logger, or `false` to disable styling. Will default to baked-in styles.
+  styles: false,
 });
 
-loggerA.debug('hello world A!');
-loggerA.error('hello world B!');
+logger.debug('hello world!');
 ```
+
+### Customizing Styles
+
+The `styles` option when creating a logger can be used to customize the CSS styles used for the logger, or to disable styling entirely (useful for environments like Capacitor, where the styling floods things like Xcode debugger).
+
+```typescript
+import { createLogger, styles } from '@evilkiwi/logger';
+
+const logger = createLogger({
+  styles: {
+    // Override the base styles.
+    base: ['font-size: 20px;', 'font-weight: bold;', 'font-family: \'Comic Sans\';'],
+
+    // Customize the code styling, including the baked-in styles.
+    code: [...styles.code, 'font-size: 10px;', 'font-style: italic;'],
+  },
+});
+```
+
+### Supported Methods
+
+The logger attempts to emulate the `console` API as closely as possible - if there's anything missing that you'd like to see, please open an issue or PR!
+
+- `debug`
+- `log`
+- `info`
+- `warn`
+- `error`
+- `group`
+- `groupCollapsed`
+- `groupEnd`
