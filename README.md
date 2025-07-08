@@ -72,3 +72,25 @@ The logger attempts to emulate the `console` API as closely as possible - if the
 - `group`
 - `groupCollapsed`
 - `groupEnd`
+
+### Grouping
+
+The `group` and `groupCollapsed` methods are used to group messages together, and can be used to create collapsible sections in the console. `@evilkiwi/logger` supports these methods as intended (via calling `groupEnd`) - but also provides an optional context closure, which will automatically call `groupEnd`.
+
+```typescript
+import { createLogger } from '@evilkiwi/logger';
+
+const logger = createLogger();
+
+logger.group('hello world', () => {
+  logger.info('nested info message');
+  logger.debug('nested debug message');
+});
+
+// or
+
+logger.group('hello world 2');
+logger.info('nested info message');
+logger.debug('nested debug message');
+logger.groupEnd();
+```
