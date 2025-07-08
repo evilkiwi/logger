@@ -31,6 +31,7 @@
       "!.vscode/**",
       "!**/out",
       "!**/release",
+      "!**/dist",
       "!**/build",
       "!**/node_modules",
       "!**/tsconfig.tsbuildinfo",
