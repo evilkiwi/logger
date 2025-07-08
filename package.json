@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@evilkiwi/logger",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "sideEffects": false,
   "packageManager": "pnpm@10.12.4",
   "description": "Pretty-print utility logger for browsers.",
