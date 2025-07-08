@@ -23,7 +23,7 @@ npm install @evilkiwi/logger
 
 ## Usage
 
-See the [example folder](https://github.com/evilkiwi/logger/tree/master/example) for a working example.
+See the [example folder](https://github.com/evilkiwi/logger/tree/main/example) for a working example.
 
 ```typescript
 import { createLogger } from '@evilkiwi/logger';
